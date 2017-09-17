@@ -21,13 +21,25 @@ gulp.task('clean-scripts', function() {
 });
 
 // SCRIPTS
-gulp.task('scripts', ['clean-scripts'], function() {
+gulp.task('scripts', function() {
     return gulp.src(config.scripts.src)
         .pipe(babel({
             presets: ['es2015']
         }))        
         .pipe(gulp.dest(config.scripts.dest))
         .pipe(connect.reload());
+});
+
+// VENDOR
+gulp.task('vendor', function() {
+    const concat = require('gulp-concat');
+    const sourcemaps = require('gulp-sourcemaps');
+
+    return gulp.src(config.scripts.vendor)
+        .pipe(sourcemaps.init())
+        .pipe(concat('vendor.js'))
+        .pipe(sourcemaps.write('.', { sourceRoot: '.' }))
+        .pipe(gulp.dest('./js'));
 });
 
 // WATCH
@@ -44,4 +56,4 @@ gulp.task('connect', function() {
   });
 
 gulp.task('dev', ['connect', 'watch']);
-gulp.task('default', ['less', 'scripts']);
+gulp.task('default', ['less', 'scripts', 'vendor']);

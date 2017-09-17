@@ -2,15 +2,19 @@
 
 module.exports = {
     "less": {
-        "src": "./app/src/less/styles.less",
-        "watch": "./app/src/less/*.less",
+        "src": "./assets/less/styles.less",
+        "watch": "./assets/less/*.less",
         "dest": "./css/"
     },
     "scripts": {
         "src": [
-            "./app/src/scripts/main.js"
+            "./app/app.js"
         ],
-        "watch": "./app/src/scripts/*.js",
+        "vendor": [
+            "node_modules/angular/angular.js",
+            "node_modules/angular-ui-router/release/angular-ui-router.js"
+        ],
+        "watch": "./app/**/*.js",
         "dest": "./js/"
     }
 };
