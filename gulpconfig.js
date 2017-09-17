@@ -8,7 +8,9 @@ module.exports = {
     },
     "scripts": {
         "src": [
-            "./app/app.js"
+            "./app/app.module.js",
+            "./app/app.routes.js",
+            "./app/**/*.js"
         ],
         "vendor": [
             "node_modules/angular/angular.js",
@@ -16,5 +18,10 @@ module.exports = {
         ],
         "watch": "./app/**/*.js",
         "dest": "./js/"
+    },
+    "templates": {
+        "src": [
+            "./app/views/*.html"
+        ]
     }
 };
